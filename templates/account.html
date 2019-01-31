@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+{% if session.logged_in %}
+    <center>
+    <h1>{{ title }}</h1>
+
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var lineData = {
+        labels : {{labels|safe}},
+        datasets : [{
+          data : {{values}},
+          borderColor: "#3e95cd",
+          label: "Money owed in PLN"
+          }
+	    ]
+    }
+
+      // draw line chart
+      var LineChart = new Chart(ctx, {
+        type: 'line',
+        data: lineData,
+        options: {
+        }
+      });
+    </script>
+    </center>
+{% else %}
+
+    <div class="alert alert-danger"><strong>Error: </strong>{{'Strona niedostępna. Zaloguj się i spróbuj ponownie.'}}</div>
+
+{% endif %}
+
+
+
+{% endblock %}

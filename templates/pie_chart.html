@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+     var pieData = {
+            datasets: [{
+                data: {{data}},
+                backgroundColor: ["#46BFBD", "#F7464A"]
+            }],
+
+            labels: ['not delayed', 'delayed'],
+
+          };
+
+     var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: false
+        }
+      });
+    </script>
+{% endblock %}

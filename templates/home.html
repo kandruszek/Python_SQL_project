@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+  {% block body %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to our ABC Bank!</h1>
+        <p>We provide loans. Would you like to get a loan? Register and fill an application.</p>
+        <p>Do you already have a loan at our bank? Great! Log in and see how much money you already paid!</p>
+        <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+        <a href="/register" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Register now!</a>
+        <a href="/login" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Login!</a>
+
+      </div>
+    </div>
+  {% endblock %}
+

@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<script charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script tcharset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<link rel= "stylesheet" type= "text/css" href= "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+{% include 'includes/_navbar.html' %}
+    <div class="container">
+        {% include 'includes/_messages.html' %}
+
+
+{% block body %}
+
+<script >
+    var dataSet = {{data|safe}};
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        data: dataSet,
+        columns: [
+            { title: "PESEL" },
+            { title: "Due date" },
+            { title: "Amount paid" },
+            { title: "Is paid?" },
+            { title: "Was delayed?" },
+            { title: "Amount left" },
+            { title: "Name" },
+            { title: "Second Name" },
+            { title: "Surname" },
+            { title: "Date of birth" },
+            { title: "Sex" },
+            { title: "Telephone" },
+            { title: "E-mail" },
+            { title: "Marital status" },
+            { title: "Education" },
+            { title: "Income" },
+            { title: "Form of employment" },
+            { title: "Number of people in household" },
+            { title: "Loan amount" },
+            { title: "Was loan accepted?" },
+            { title: "Date of application" }
+        ]
+    } );
+} );
+
+$(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+});
+
+</script>
+
+<table id="example" class="display" width="100%"></table>
+
+{% endblock %}
+
+    </div>

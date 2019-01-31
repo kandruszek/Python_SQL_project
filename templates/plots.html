@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Your active clients:</h1>
+    <ul class="list-group">
+        {% for pesel in pesels %}
+        <li class="list-group-item"><a href="plots/{{pesel}}">{{pesel}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+     <center>
+
+    <h1>{{ title }}</h1>
+
+    <canvas id="myChart3" width="600" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart3").getContext("2d");
+
+    var barData = {
+        labels : [
+          {% for item in bar_labels %}
+           "{{ item }}",
+          {% endfor %}
+	    ],
+
+        datasets : [{
+          data : [
+            {% for item in bar_values %}
+               {{ item }},
+              {% endfor %}
+	      ],
+	      backgroundColor: "#3e95cd",
+	      label: "in PLN"
+         }
+        ]
+      }
+
+    var myChart3 = new Chart(ctx, {
+        type: 'bar',
+        data: barData,
+        options: {
+            title: {
+            display: true,
+            text: 'Payments made by client monthly'
+            }
+        }
+      });
+    </script>
+
+    <br><br><br>
+
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var lineData = {
+        labels : {{line_labels|safe}},
+        datasets : [{
+          data : {{line_values}},
+          borderColor: "#3e95cd",
+          label: "in PLN"
+          }
+	    ]
+    }
+
+
+      // draw line chart
+      var LineChart = new Chart(ctx, {
+        type: 'line',
+        data: lineData,
+        options: {
+        title: {
+            display: true,
+            text: 'Money still owed by the client'
+            }
+        }
+      });
+    </script>
+
+    <br><br><br>
+
+    <canvas id="myChart2" width="600" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart2").getContext("2d");
+
+     var pieData = {
+            datasets: [{
+                data: {{pie_data}},
+                backgroundColor: ["#46BFBD", "#F7464A"]
+            }],
+
+            labels: ['not delayed', 'delayed'],
+
+          };
+
+     var myChart2 = new Chart(ctx, {
+        type: 'pie',
+        data: pieData,
+        options: {
+            title: {
+                display: true,
+                text: 'How many installments were delayed?'
+            }
+        }
+      });
+    </script>
+
+
+
+
+
+  </center>
+{% endblock %}
